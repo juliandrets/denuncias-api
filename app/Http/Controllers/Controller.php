@@ -19,4 +19,15 @@ class Controller extends BaseController
         $this->model::find($id)->delete();
         return redirect($this->route.'?event=delete');
     }
+
+    public function response($data)
+    {
+        return response()->json($data , $status=200, $headers=[], $options=JSON_PRETTY_PRINT);
+    }
+
+    public function getAll()
+    {
+        $response = $this->model::all();
+        return $this->response($response);
+    }
 }
