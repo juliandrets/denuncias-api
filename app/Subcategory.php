@@ -16,6 +16,6 @@ class Subcategory extends Authenticatable
 
     public function category()
     {
-        return $this->hasOne(Category::class, 'id', 'category_id');
+        return $this->hasOne(Category::class, 'id', 'category_id')->select('id', 'name');
     }
 }

@@ -13,4 +13,24 @@ class Complaint extends Authenticatable
 
     protected $keyType = 'string';
     protected $guarded = [];
+
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id');
+    }
+
+    public function category()
+    {
+        return $this->hasOne(Category::class, 'id')->select('name');
+    }
+
+    public function subcategory()
+    {
+        return $this->hasOne(Subcategory::class, 'id')->select('name');
+    }
+
+    public function neighborhood()
+    {
+        return $this->hasOne(Neighborhood::class, 'id')->select('name');
+    }
 }

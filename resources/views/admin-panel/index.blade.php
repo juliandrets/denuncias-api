@@ -88,6 +88,54 @@
       </div>
       <!-- /.row -->
 
+      <div class="row">
+        <div class="col-md-12">
+          <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title  pull-left">Control de denuncias</h3>
+            </div>
+
+            <!-- /.box-header -->
+            <div class="box-body">
+
+              <table class="table table-bordered">
+                <tr>
+                  <th style="width: 10px">#</th>
+                  <th>Barrio</th>
+                  <th>Cantidad de denuncias</th>
+                  <th style="width: 150px">Acciones</th>
+                </tr>
+                @foreach($barrios as $barrio)
+                  <tr>
+                    <td>{{ $loop->iteration }}.</td>
+                    <td>{{ $barrio->name }}</td>
+                    <td>{{ $barrio->countC }}</td>
+                    <td>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-info" data-toggle="dropdown"><i class="fa fa-cogs" aria-hidden="true"></i></button>
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                          <span class="caret"></span>
+                          <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                          <li>
+                            <a href="/api/adm/denuncias/{{ $barrio->name }}">
+                              <button type="button" style="background-color: transparent; padding: 0px; border: none">
+                                <i class="fa fa-eye" aria-hidden="true" style="margin-right: 10px"></i> Ver denuncias
+                              </button>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                @endforeach
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
     <!-- /.content -->
   </div>

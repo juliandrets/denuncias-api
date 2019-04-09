@@ -13,4 +13,9 @@ class Neighborhood extends Authenticatable
 
     protected $keyType = 'string';
     protected $guarded = [];
+
+    public function countComplaints()
+    {
+        return $this->hasMany(Complaint::class, 'neighborhood_id', 'id')->select('id');
+    }
 }

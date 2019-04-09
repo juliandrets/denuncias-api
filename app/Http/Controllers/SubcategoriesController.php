@@ -43,4 +43,13 @@ class SubcategoriesController extends Controller
 
         return redirect($this->route.'?event=update');
     }
+
+    public function getSubcategoriesFromCategory($id)
+    {
+        $response = $this->model::where('category_id', $id)
+            ->with('category')
+            ->get();
+
+        return $this->response($response);
+    }
 }

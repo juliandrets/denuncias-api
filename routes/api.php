@@ -17,6 +17,7 @@ Route::group(['prefix' => 'v1'], function () {
     Route::get('barrios', 'NeighborhoodController@getAll');
     Route::get('categorias', 'CategoriesController@getAll');
     Route::get('subcategorias', 'SubcategoriesController@getAll');
+    Route::get('subcategorias/{id}/getSubcategoriesFromCategory', 'SubcategoriesController@getSubcategoriesFromCategory');
     Route::resource('denuncias', 'ComplaintController');
 });
 Route::group(['prefix' => 'adm'], function () {
@@ -30,5 +31,6 @@ Route::group(['prefix' => 'adm'], function () {
     Route::resource('subcategorias', 'SubcategoriesController');
     Route::get('subcategorias/{id}/delete', 'SubcategoriesController@destroy');
     Route::post('subcategorias/{id}/update', 'SubcategoriesController@update');
+    Route::get('denuncias/{barrio}', 'ComplaintController@denunciasBarrio');
 
 });
