@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class ComplaintController extends Controller
 {
     protected $model = Complaint::class;
+    protected $route = 'api/adm/denuncias';
 
     public function index()
     {
@@ -51,5 +52,20 @@ class ComplaintController extends Controller
            'barrio'     => $barrio,
            'denuncias'  => $denuncias
         ]);
+    }
+
+    public function check($id)
+    {
+        $denuncia = $this->model::find($id);
+        $denuncia->checked = $denuncia->checked ? 0 : 1;
+        $denuncia->save();
+        return back();
+    }
+
+    public function destroyComplaint($id, $barrio)
+    {
+        $this->route = $this->route.'/'.$barrio;
+        $this->model::find($id)->delete();
+        return redirect($this->route.'?event=delete');
     }
 }

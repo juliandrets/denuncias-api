@@ -16,21 +16,21 @@ class Complaint extends Authenticatable
 
     public function user()
     {
-        return $this->hasOne(User::class, 'id');
+        return $this->hasOne(User::class, 'id' ,'user_id');
     }
 
     public function category()
     {
-        return $this->hasOne(Category::class, 'id')->select('name');
+        return $this->hasOne(Category::class, 'id', 'category_id')->select('name');
     }
 
     public function subcategory()
     {
-        return $this->hasOne(Subcategory::class, 'id')->select('name');
+        return $this->hasOne(Subcategory::class, 'id', 'subcategory_id')->select('name');
     }
 
     public function neighborhood()
     {
-        return $this->hasOne(Neighborhood::class, 'id')->select('name');
+        return $this->hasOne(Neighborhood::class, 'id', 'neighborhood_id')->select('name');
     }
 }

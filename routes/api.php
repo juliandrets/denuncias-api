@@ -32,5 +32,7 @@ Route::group(['prefix' => 'adm'], function () {
     Route::get('subcategorias/{id}/delete', 'SubcategoriesController@destroy');
     Route::post('subcategorias/{id}/update', 'SubcategoriesController@update');
     Route::get('denuncias/{barrio}', 'ComplaintController@denunciasBarrio');
+    Route::get('denuncias/{id}/check', 'ComplaintController@check');
+    Route::get('denuncias/{id}/{barrio}/delete', 'ComplaintController@destroyComplaint');
 
 });
