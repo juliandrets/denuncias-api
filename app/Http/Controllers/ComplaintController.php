@@ -35,7 +35,9 @@ class ComplaintController extends Controller
             'picture'           => 'nopic.jpg',
         ]);
 
-        $item->save();
+        if ($item->save()) {
+            return $this->response($item);
+        }
     }
 
     public function denunciasBarrio($barrio)
